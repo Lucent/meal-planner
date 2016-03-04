@@ -17,10 +17,12 @@ while (($line = fgetcsv($fp, 0, "\t")) !== FALSE) {
 <html>
 <head>
  <title>Food Picker</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
  <style>
-table		{ font-size: large; }
-div			{ position: fixed; top: 1ex; right: 1ex; font-size: x-large; }
-input[type=text]	{ width: 5ex; font-size: inherit; }
+table		{ font-size: large; margin-top: 5em; }
+span		{ width: 5ex; display: inline-block; text-align: right; border-bottom: thin solid #CCC; font-family: sans-serif; }
+div			{ position: fixed; top: 1ex; right: 1ex; margin-left: 1ex; padding: 0.5ex; font-size: x-large; background-color: white; border: thin solid #CCC; }
+input[type=text]	{ width: 5ex; font-size: inherit; text-align: right; }
  </style>
  <script src="js/interactivity.js" defer></script>
  <script>
