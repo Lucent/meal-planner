@@ -19,8 +19,8 @@ while (($line = fgetcsv($fp, 0, "\t")) !== FALSE) {
  <title>Food Picker</title>
  <style>
 table		{ font-size: large; }
-.Over		{ color: #DDD; }
-.Warning	{ color: #DD0; }
+div			{ position: fixed; top: 1ex; right: 1ex; font-size: x-large; }
+input[type=text]	{ width: 5ex; font-size: inherit; }
  </style>
  <script src="js/interactivity.js" defer></script>
  <script>
@@ -28,7 +28,7 @@ var foods = <?= json_encode($foods) ?>;
  </script>
 </head>
 <body>
-<div style="position: fixed; top: 1ex; right: 1ex; font-size: x-large;"><span id="RunningTotal">0</span> kcal of <input type="text" id="MaxCals" value="1300" style="width: 5ex; font-size: inherit;"> selected</div>
+<div><span id="RunningTotal">0</span> kcal of <input type="text" id="GoalCals" value="1300"> daily goal and <input type="text" id="MaxCals" value="1490"> hard limit</div>
 <table>
  <thead>
   <th></th>
