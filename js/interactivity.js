@@ -1,5 +1,7 @@
 "use strict";
 
+var last_checkbox;
+
 var load_complete = function() {
 	var checkboxes = document.querySelectorAll("input[type=checkbox]");
 	for (var x = 0; x < checkboxes.length; x++) {
@@ -7,7 +9,7 @@ var load_complete = function() {
 		checkboxes[x].parentNode.parentNode.onmouseenter = simulate_food_check;
 		checkboxes[x].parentNode.parentNode.onmouseleave = simulate_food_uncheck;
 	}
-	document.getElementById("FoodChoices").onmouseleave = clear_strikethroughs;
+	document.getElementById("FoodChoices").onmouseleave = clear_outlines;
 	document.getElementById("RunningTotal").onchange = update_available_foods;
 	document.getElementById("GoalCals").onchange = update_available_foods;
 	document.getElementById("MaxCals").onchange = update_available_foods;
@@ -21,7 +23,7 @@ var simulate_food_check = function(e) {
 var simulate_food_uncheck = function(e) {
 	var checkbox = this.querySelector("input");
 	checkbox.simulated = false;
-	checkbox.onchange();
+	last_checkbox = checkbox;
 };
 
 var click_checkbox = function(e) {
@@ -77,7 +79,8 @@ var update_available_foods = function(current) {
 	}
 };
 
-var clear_strikethroughs = function() {
+var clear_outlines = function() {
+	last_checkbox.onchange();
 	var checkboxes = document.querySelectorAll("input[type=checkbox]");
 	for (var x = 0; x < checkboxes.length; x++) {
 		var food_label = checkboxes[x].parentNode.parentNode.querySelector("label");
