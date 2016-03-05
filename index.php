@@ -19,6 +19,8 @@ while (($line = fgetcsv($fp, 0, "\t")) !== FALSE) {
  <title>Food Picker</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
  <style>
+.Over		{ text-decoration: line-through; }
+td			{ color: black; }
 table		{ font-size: large; margin-top: 5em; }
 div			{ position: fixed; top: 1ex; right: 1ex; margin-left: 1ex; padding: 0.5ex; font-size: x-large; background-color: white; border: thin solid #CCC; }
 input[type=text]	{ width: 5ex; font-size: inherit; text-align: right; }
@@ -30,7 +32,7 @@ var foods = <?= json_encode($foods) ?>;
 </head>
 <body>
 <div><input type="text" id="RunningTotal" value="0"> kcal of <input type="text" id="GoalCals" value="1300"> daily goal and <input type="text" id="MaxCals" value="1490"> hard limit</div>
-<table>
+<table id="FoodChoices">
  <thead>
   <th></th>
   <th>kcal</th>
@@ -42,7 +44,7 @@ foreach ($foods as $key=>$food) {
 	echo "  <tr>\n";
 	echo "   <td><input type='checkbox' id='$key'></td>\n";
 	echo "   <td align='right'>", $food["Cal"], "</td>\n";
-	echo "   <td>", $food["Name"], "</td>\n";
+	echo "   <td><label for='$key'>", $food["Name"], "</label></td>\n";
 	echo "  </tr>\n";
 }
 ?>
