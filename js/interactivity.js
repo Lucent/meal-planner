@@ -63,16 +63,16 @@ var update_available_foods = function(current) {
 
 		if (checkboxes[x].id == current.id || checkboxes[x].checked) {
 			food_label.parentNode.className = "";
-			food_label.parentNode.style.color = "";
+			food_label.parentNode.style.borderColor = "";
 		} else if (future_total + foods[x].Cal > max_calories) {
 			food_label.parentNode.className = "Over";
-			food_label.parentNode.style.color = "#000000";
+			food_label.parentNode.style.borderColor = "";
 		} else if (future_total + foods[x].Cal > goal_calories) {
 			food_label.parentNode.className = "Over";
-			food_label.parentNode.style.color = calc_color(future_total + foods[x].Cal, "DDDDDD", "000000", goal_calories, max_calories);
+			food_label.parentNode.style.borderColor = calc_color(future_total + foods[x].Cal, "000000", "DDDDDD", goal_calories, max_calories);
 		} else {
 			food_label.parentNode.className = "";
-			food_label.parentNode.style.color = "";
+			food_label.parentNode.style.borderColor = "black";
 		}
 	}
 };
@@ -81,8 +81,8 @@ var clear_strikethroughs = function() {
 	var checkboxes = document.querySelectorAll("input[type=checkbox]");
 	for (var x = 0; x < checkboxes.length; x++) {
 		var food_label = checkboxes[x].parentNode.parentNode.querySelector("label");
-		food_label.className = "";
-		food_label.parentNode.style.color = "";
+		food_label.parentNode.className = "";
+		food_label.parentNode.style.borderColor = "";
 	}
 };
 

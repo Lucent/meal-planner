@@ -19,8 +19,7 @@ while (($line = fgetcsv($fp, 0, "\t")) !== FALSE) {
  <title>Food Picker</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
  <style>
-.Over		{ text-decoration: line-through; }
-td			{ color: black; }
+td			{ color: black; border: thin solid transparent; }
 table		{ font-size: large; margin-top: 5em; }
 div			{ position: fixed; top: 1ex; right: 1ex; margin-left: 1ex; padding: 0.5ex; font-size: x-large; background-color: white; border: thin solid #CCC; }
 input[type=text]	{ width: 5ex; font-size: inherit; text-align: right; }
