@@ -20,7 +20,6 @@ while (($line = fgetcsv($fp, 0, "\t")) !== FALSE) {
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
  <style>
 table		{ font-size: large; margin-top: 5em; }
-span		{ width: 5ex; display: inline-block; text-align: right; border-bottom: thin solid #CCC; font-family: sans-serif; }
 div			{ position: fixed; top: 1ex; right: 1ex; margin-left: 1ex; padding: 0.5ex; font-size: x-large; background-color: white; border: thin solid #CCC; }
 input[type=text]	{ width: 5ex; font-size: inherit; text-align: right; }
  </style>
@@ -30,7 +29,7 @@ var foods = <?= json_encode($foods) ?>;
  </script>
 </head>
 <body>
-<div><span id="RunningTotal">0</span> kcal of <input type="text" id="GoalCals" value="1300"> daily goal and <input type="text" id="MaxCals" value="1490"> hard limit</div>
+<div><input type="text" id="RunningTotal" value="0"> kcal of <input type="text" id="GoalCals" value="1300"> daily goal and <input type="text" id="MaxCals" value="1490"> hard limit</div>
 <table>
  <thead>
   <th></th>

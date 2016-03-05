@@ -4,21 +4,22 @@ var load_complete = function() {
 	for (var x = 0; x < checkboxes.length; x++) {
 		checkboxes[x].onchange = click_checkbox;
 	}
+	document.getElementById("RunningTotal").onchange = update_available_foods;
 	document.getElementById("GoalCals").onchange = update_available_foods;
 	document.getElementById("MaxCals").onchange = update_available_foods;
 };
 var click_checkbox = function(e) {
 	var total_holder = document.getElementById("RunningTotal");
-	var current_total = parseInt(total_holder.innerHTML, 10);
+	var current_total = parseInt(total_holder.value, 10);
 	if (this.checked)
-		total_holder.innerHTML = current_total + foods[this.id].Cal;
+		total_holder.value = current_total + foods[this.id].Cal;
 	else
-		total_holder.innerHTML = current_total - foods[this.id].Cal;
+		total_holder.value = current_total - foods[this.id].Cal;
 	update_available_foods();
 };
 var update_available_foods = function() {
 	var total_holder = document.getElementById("RunningTotal");
-	var current_total = parseInt(total_holder.innerHTML, 10);
+	var current_total = parseInt(total_holder.value, 10);
 	var goal_calories = parseInt(document.getElementById("GoalCals").value, 10);
 	var max_calories = parseInt(document.getElementById("MaxCals").value, 10);
 
