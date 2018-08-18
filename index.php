@@ -1,5 +1,17 @@
-<?
-$food_file = "foods.tsv";
+<?php
+if ($_GET["user"] == "jeannette") {
+	$food_file = "jeannette.tsv";
+	$goals = [
+		"daily" => 1500,
+		"limit" => 1760
+	];
+} else {
+	$food_file = "foods.tsv";
+	$goals = [
+		"daily" => 1300,
+		"limit" => 1490
+	];
+}
 
 $foods = [];
 $fp = fopen($food_file, "r");
@@ -30,7 +42,7 @@ var foods = <?= json_encode($foods) ?>;
  </script>
 </head>
 <body>
-<div><input type="text" id="RunningTotal" value="0"> kcal of <input type="text" id="GoalCals" value="1300"> daily goal and <input type="text" id="MaxCals" value="1490"> hard limit</div>
+<div><input type="text" id="RunningTotal" value="0"> kcal of <input type="text" id="GoalCals" value="<?= $goals["daily"] ?>"> daily goal and <input type="text" id="MaxCals" value="<?= $goals["limit"] ?>"> hard limit</div>
 <table id="FoodChoices">
  <thead>
   <th></th>
@@ -38,7 +50,7 @@ var foods = <?= json_encode($foods) ?>;
   <th>Food</th>
  </thead>
  <tbody>
-<?
+<?php
 foreach ($foods as $key=>$food) {
 	echo "  <tr>\n";
 	echo "   <td><input type='checkbox' id='$key'></td>\n";
