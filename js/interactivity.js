@@ -1,8 +1,10 @@
 "use strict";
 
 var last_checkbox;
+var foods = [];
 
-var load_complete = function() {
+async function load_complete() {
+	await fetch_foods("foods.tsv");
 	var checkboxes = document.querySelectorAll("input[type=checkbox]");
 	for (var x = 0; x < checkboxes.length; x++) {
 		checkboxes[x].onchange = click_checkbox;
@@ -14,6 +16,51 @@ var load_complete = function() {
 	document.getElementById("GoalCals").onchange = update_available_foods;
 	document.getElementById("MaxCals").onchange = update_available_foods;
 };
+
+async function fetch_foods(filename) {
+	const response = await fetch(filename);
+	const data = await response.text();
+	const lines = data.split('\n').slice(1);
+	for (const line of lines) {
+		if (line.trim() === "") continue; // Ignore empty lines
+		const [food_name, calories, person] = line.split('\t');
+		foods.push({
+			Name: food_name,
+			Cal: parseInt(calories, 10),
+			Person: person
+		});
+	}
+
+	populate_table();
+}
+
+function populate_table() {
+	const table = document.querySelector("#FoodChoices").tBodies[0];
+
+	for (const [key, food] of foods.entries()) {
+		// Create a new row and cells.
+		const row = table.insertRow();
+
+		// First cell with a checkbox.
+		const cell1 = row.insertCell(0);
+		const checkbox = document.createElement('input');
+		checkbox.type = 'checkbox';
+		checkbox.id = key.toString();
+		cell1.appendChild(checkbox);
+
+		// Second cell with calories, aligned to the right.
+		const cell2 = row.insertCell(1);
+		cell2.setAttribute('align', 'right');
+		cell2.textContent = food.Cal;
+
+		// Third cell with food name.
+		const cell3 = row.insertCell(2);
+		const label = document.createElement('label');
+		label.setAttribute('for', key.toString());
+		label.textContent = food.Name;
+		cell3.appendChild(label);
+	}
+}
 
 var simulate_food_check = function(e) {
 	var checkbox = this.querySelector("input");

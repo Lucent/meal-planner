@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Food Picker</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+ <style>
+td			{ color: black; border: thin solid transparent; }
+table		{ font-size: large; margin-top: 5em; }
+div			{ position: fixed; top: 1ex; right: 1ex; margin-left: 1ex; padding: 0.5ex; font-size: x-large; background-color: white; border: thin solid #CCC; }
+input[type=text]	{ width: 5ex; font-size: inherit; text-align: right; }
+ </style>
+ <script src="js/interactivity.js" defer></script>
+</head>
+<body>
+<div><input type="text" id="RunningTotal" value="0"> kcal of <input type="text" id="GoalCals" value="1300"> daily goal and <input type="text" id="MaxCals" value="1490"> hard limit</div>
+<table id="FoodChoices">
+ <thead>
+  <th></th>
+  <th>kcal</th>
+  <th>Food</th>
+ </thead>
+ <tbody>
+ </tbody>
+</table>
+</body>
+</html>
